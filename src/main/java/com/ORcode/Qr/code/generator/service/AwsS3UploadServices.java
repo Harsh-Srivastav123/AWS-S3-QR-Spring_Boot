@@ -8,6 +8,7 @@ import com.amazonaws.services.s3.model.*;
 import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 import org.thymeleaf.spring6.templateresolver.SpringResourceTemplateResolver;
@@ -23,9 +24,14 @@ import java.util.UUID;
 @Service
 public class AwsS3UploadServices {
     private static final Logger log = LoggerFactory.getLogger(AwsS3UploadServices.class);
+
+    @Value("${secretKey}")
+    String secretKey;
+
+    @Value("${accessKey}")
+    String accessKey;
     private static String bucketName="qrcode-data";
-    private static String accessKey="AKIA47DRVJ5BLMCZV47U";
-    private static String secretKey="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";
+
 
     public String uploadFiles(BufferedImage image,  String key){
 

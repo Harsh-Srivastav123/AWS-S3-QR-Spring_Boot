@@ -6,6 +6,7 @@ package com.ORcode.Qr.code.generator.S3Configurations;
 
 
 import lombok.Data;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import software.amazon.awssdk.regions.Region;
 
@@ -19,11 +20,15 @@ public class S3ClientConfigurationProperties {
     private Region region = Region.AP_SOUTH_1;
     private URI endpoint = null;
 
-//    private static String accessKey="AKIA47DRVJ5BLMCZV47U";
-//    private static String secretKey="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";
+    @Value("${secretKey}")
+    String secretKey;
 
-    private String accessKeyId="AKIA47DRVJ5BLMCZV47U";
-    private String secretAccessKey="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";
+    @Value("${accessKey}")
+    String accessKey;
+
+
+    private String accessKeyId=accessKey;
+    private String secretAccessKey=secretKey;
 
     // Bucket name we'll be using as our backend storage
     private String bucket="qrcode-data";
