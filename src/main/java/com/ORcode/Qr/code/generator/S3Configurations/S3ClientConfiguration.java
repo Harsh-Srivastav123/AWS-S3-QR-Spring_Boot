@@ -77,18 +77,7 @@ public class S3ClientConfiguration {
     }
 
 
-//    @Bean
-//    public AwsCredentialsProvider awsCredentialsProvider(S3ClientConfigurationProperties s3props) {
-//        if (StringUtils.isBlank(s3props.getAccessKeyId())) {
-//            return DefaultCredentialsProvider.create();
-//        } else {
-//            return () -> {
-//                return AwsBasicCredentials.create(
-//                        s3props.getAccessKeyId(),
-//                        s3props.getSecretAccessKey());
-//            };
-//        }
-//    }
+
 
     @Bean
     public AmazonS3 s3(){
